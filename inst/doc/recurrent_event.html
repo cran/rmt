@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Analysis of composite endpoints of recurrent event and death by the restricted mean time in favor of treatment</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Analysis of composite endpoints of recurrent event and death by the restricted mean time in favor of treatment</h1>
+
+
+
+<div id="introduction" class="section level2">
+<h2>INTRODUCTION</h2>
+<p>This vignette demonstrates the use of the R-package <code>rmt</code> for the restricted-mean-time-in-favor-of-treatment approach to the analysis of composite outcomes consisting of recurrent event and death.</p>
+<div id="data-type" class="section level3">
+<h3>Data type</h3>
+<p>Let <span class="math inline">\(N(t)\)</span> denote the counting process for the recurrent event, e.g., repeated hospitalizations, and let <span class="math inline">\(N_D(t)\)</span> denote that for death. The composite outcome process is defined by <span class="math display">\[Y(t)=N(t)+\infty N_D(t).\]</span> That is, <span class="math inline">\(Y(t)\)</span> counts the number of non-fatal event on the living patient and jumps to <span class="math inline">\(\infty\)</span> when the patient dies. Traditional ways of combining the components include:</p>
+<ol style="list-style-type: decimal">
+<li>Time to the first event: <span class="math inline">\(Y^*(t)=I\{N(t)+N_D(t)&gt;0\}\)</span>;</li>
+<li>Weighted composite event process (Mao and Lin, 2016): <span class="math inline">\(Y^{**}(t)=N(t)+w_DN_D(t)\)</span> for some <span class="math inline">\(w_D\geq 1\)</span>;</li>
+</ol>
+<p>Compared to these approaches, <span class="math inline">\(Y(t)\)</span> has the advantage of including all events while prioritizing death in a natural, hierarchical way.</p>
+</div>
+<div id="effect-size-estimand" class="section level3">
+<h3>Effect size estimand</h3>
+<p>Let <span class="math inline">\(Y^{(a)}\)</span> denote the outcome process from group <span class="math inline">\(a\)</span> (<span class="math inline">\(a=1\)</span> for the treatment and <span class="math inline">\(a=0\)</span> for the control). The estimand of interest is constructed under a generalized pairwise comparison framework (Buyse, 2010). With <span class="math inline">\(Y^{(1)}\perp Y^{(0)}\)</span>, let <span class="math display">\[\mu(\tau)=E\int_0^\tau I\{Y^{(1)}(t)&lt; Y^{(0)}(t)\}{\rm d}t -
+E\int_0^\tau I\{Y^{(1)}(t)&gt; Y^{(0)}(t)\}{\rm d}t,\]</span> for some pre-specified follow-up time <span class="math inline">\(\tau\)</span>. We call <span class="math inline">\(\mu(\tau)\)</span> the <strong>restricted mean time (RMT) in favor of treatment</strong> and interpret it as the <em>average time gained by the treatment in a more favorable condition</em>. It generalizes the familiar restricted mean survival time to account for the non-fatal events. In fact, it can be shown that <span class="math inline">\(\mu(\tau)\)</span> reduces to the net restricted mean survival time (Royston &amp; Parmar, 2011) if <span class="math inline">\(N(t)\equiv 0\)</span>. For details of the methodology, refer to Mao (2021).</p>
+<p>The overall effect size admits a component-wise decomposition: <span class="math display">\[\mu(\tau)=\mu_D(\tau)+\mu_H(\tau),\]</span> where <span class="math display">\[\begin{equation}\tag{*}
+\mu_D(\tau)=E\int_0^\tau I\{Y^{(1)}(t)&lt;\infty, Y^{(0)}(t)=\infty\}{\rm d} t-
+E\int_0^\tau I\{Y^{(0)}(t)&lt;\infty, Y^{(0)}(t)=\infty\}{\rm d} t
+\end{equation}\]</span> is equivalent to the standard net restricted mean survival time and <span class="math display">\[\mu_H(\tau)=E\int_0^\tau I\{Y^{(1)}(t)&lt; Y^{(0)}(t)&lt;\infty\}{\rm d}t -
+E\int_0^\tau I\{Y^{(0)}(t)&lt; Y^{(1)}(t)&lt;\infty\}{\rm d}t\]</span> is the average time gained by the treatment with fewer non-fatal events among the living patients. The second component can be further decomposed by <span class="math inline">\(\mu_H(\tau)=\sum_{k=1}^K\mu_k(\tau)\)</span>, where <span class="math display">\[\begin{equation}\tag{**}
+\mu_k(\tau)=E\int_0^\tau I\{Y^{(1)}(t)&lt;k, Y^{(0)}(t)=k\}{\rm d} t-
+E\int_0^\tau I\{Y^{(0)}(t)&lt;k, Y^{(0)}(t)=k\}{\rm d} t,
+\end{equation}\]</span> and <span class="math inline">\(K\)</span> is the maximum number of non-fatal event. The quantity <span class="math inline">\(\mu_k(\tau)\)</span> can be interpreted as the average time gained by the treatment before experiencing the <span class="math inline">\(k\)</span>th non-fatal event among the living patients.</p>
+</div>
+</div>
+<div id="basic-syntax" class="section level2">
+<h2>BASIC SYNTAX</h2>
+<div id="data-fitting-and-summarization" class="section level3">
+<h3>Data fitting and summarization</h3>
+<p>The main data-fitting function is <code>rmtfit()</code>. To use the function, the input data must be organized in the “long” format. Specifically, we need an <code>id</code> variable containing the unique patient identifiers, a <code>time</code> variable containing the event times, a <code>status</code> variable labeling the event type (<code>status=1</code> for non-fatal event, <code>=2</code> for death, and <code>=0</code> for censoring), and, finally, a <em>binary</em> <code>trt</code> variable containing the subject-level treatment arm indicators. If <code>id</code>, <code>time</code>, <code>status</code>, and <code>trt</code> are all variables in a data frame <code>data</code>, we can then use the formula form of the function:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>obj<span class="ot">=</span><span class="fu">rmtfit</span>(<span class="fu">rec</span>(id,time,status)<span class="sc">~</span>trt,data)</span></code></pre></div>
+<p>Otherwise, we can feed the vector-valued variables directly into the function:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>obj<span class="ot">=</span><span class="fu">rmtfit</span>(id,time,status,trt,<span class="at">type=</span><span class="st">&quot;recurrent&quot;</span>)</span></code></pre></div>
+<p>Note that the last <code>type</code> option must be specified; otherwise the input will be treated as multistate rather than recurrent event data. The returned object <code>obj</code> contains basically all the information about the overall and component-wise RMTs. To extract relevant information for a particular <span class="math inline">\(\tau=\)</span><code>tau</code>, use</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj,tau,Kmax)</span></code></pre></div>
+<p>If the last option <code>Kmax</code> is specified, say, as <span class="math inline">\(l\)</span>, then the estimates for the <span class="math inline">\(\mu_k(\tau)\)</span> over <span class="math inline">\(k=l,\ldots, K\)</span> will be aggregated, i.e., <span class="math inline">\(\sum_{k=l}^K\mu_k(\tau)\)</span>. Therefore, to make inference on <span class="math inline">\(\mu_H(\tau)\)</span>, use</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj,tau,<span class="at">Kmax=</span><span class="dv">1</span>)</span></code></pre></div>
+</div>
+<div id="plot-of-mucdot" class="section level3">
+<h3>Plot of <span class="math inline">\(\mu(\cdot)\)</span></h3>
+<p>To plot the estimated <span class="math inline">\(\mu(\tau)\)</span> as a function of <span class="math inline">\(\tau\)</span>, use</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj,<span class="at">conf=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p>The option <code>conf=T</code> requests the 95% confidence limits to be overlaid. The color and line type of the confidence limits can be controlled by arguments <code>conf.col</code> and <code>conf.lty</code>, respectively. Other graphical parameters can be specified and, if so, will be passed to the underlying generic <code>plot</code> method.</p>
+</div>
+<div id="bouquet-plot" class="section level3">
+<h3>Bouquet plot</h3>
+<p>The dynamic profile of treatment effects as follow-up progresses is captured by the bouquet plot, which puts <span class="math inline">\(\tau\)</span> on the vertical axis and plots the component-wise restricted mean win/loss times, i.e., the first and second terms on the right hand side of <span class="math inline">\((*)\)</span> and <span class="math inline">\((**)\)</span>, as functions of <span class="math inline">\(\tau\)</span> on the two sides. The bouquet plot is useful because it visualizes the component-wise contributions to the overall effect. To plot it, use</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bouquet</span>(obj,Kmax)</span></code></pre></div>
+<p>The option <code>Kmax</code> performs a similar task to that in the <code>summary()</code> function. For better visualization, we should almost always specify a <code>Kmax</code><span class="math inline">\(&lt;K\)</span>, especially when <span class="math inline">\(K\)</span> is large. Other graphical parameters can be specified and, if so, will be passed to the underlying generic <code>plot</code> method.</p>
+</div>
+</div>
+<div id="an-example-with-the-hf-action-trial" class="section level2">
+<h2>AN EXAMPLE WITH THE HF-ACTION TRIAL</h2>
+<div id="data-description" class="section level3">
+<h3>Data description</h3>
+<p>A total of over two thousand heart failure patients across the USA, Canada, and France participated in the Heart Failure: A Controlled Trial Investigating Outcomes of Exercise Training between 2003–2007 (O’Connor et al., 2009). The primary objective of the trial was to evaluate the effect of adding exercise training to the usual patient care on the composite endpoint of all-cause hospitalization and death. We consider a subgroup of 426 non-ischemic patients with baseline cardio-pulmonary exercise test less than or equal to nine minutes. In this subgroup, 205 patients were randomly assigned to receive exercise training in addition to usual care and 221 to receive usual care alone. With a median follow-up time about 28 months, the death rates in the exercise training and usual care groups are about 18% and 26%, and the average numbers of recurrent hospitalizations per patient about 2.2 and 2.6, respectively. The maximum number of hospitalizations per patient is <span class="math inline">\(K=26\)</span>.</p>
+<p>The dataset <code>hfaction</code> is contained in the <code>rmt</code> package and can be loaded by</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmt)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(hfaction)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        patid       time status trt_ab age60</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 HFACT00001 0.60506502      1      0     1</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 HFACT00001 1.04859685      0      0     1</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 HFACT00002 0.06297057      1      0     1</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 HFACT00002 0.35865845      1      0     1</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 HFACT00002 0.39698836      1      0     1</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 HFACT00002 3.83299110      0      0     1</span></span></code></pre></div>
+<p>The dataset is already in a format suitable for <code>rmtfit()</code> (<code>status</code>= 1 for hospitalization and = 2 for death).</p>
+</div>
+<div id="estimation-and-inference" class="section level3">
+<h3>Estimation and inference</h3>
+<p>We first fit the data by</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>obj<span class="ot">=</span><span class="fu">rmtfit</span>(<span class="fu">rec</span>(patid,time,status)<span class="sc">~</span>trt_ab,<span class="at">data=</span>hfaction)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">## print the event numbers by group</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>obj</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rmtfit.formula(formula = rec(patid, time, status) ~ trt_ab, data = hfaction)</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     N Event 1 Event 2 Event 3 Event 4 Event 5 Event 6 Event 7 Event 8 Event 9</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 221     170     117      86      56      33      23      15      13      13</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 205     145      89      55      43      32      21      15      11       7</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Event 10 Event 11 Event 12 Event 13 Event 14 Event 15 Event 16 Event 17</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0       11        7        6        6        5        3        2        2</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        5        4        3        2        2        2        2        2</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Event 18 Event 19 Event 20 Event 21 Event 22 Event 23 Event 24 Event 25</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0        2        1        0        0        0        0        0        0</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        2        2        1        1        1        1        1        1</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Event 26 Death Med follow-up time</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0        0    57           2.390144</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        1    36           2.302533</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize the inference results for tau=3.5 years</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj,<span class="at">tau=</span><span class="fl">3.5</span>,<span class="at">Kmax=</span><span class="dv">4</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rmtfit.formula(formula = rec(patid, time, status) ~ trt_ab, data = hfaction)</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Restricted mean winning time by tau = 3.5:</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Event 1   Event 2    Event 3    Event 4    Event 5    Event 6    Event 7</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 0.2461459 0.1797341 0.07400189 0.05705096 0.06778913 0.03229824 0.02901336</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.2606647 0.2246581 0.18911776 0.07928876 0.05043218 0.04036515 0.01434557</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Event 8    Event 9    Event 10    Event 11    Event 12     Event 13</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 0.02467620 0.01351584 0.007900133 0.001056981 0.007932054 0.0006445581</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.01169075 0.01232759 0.009301100 0.004563094 0.001627585 0.0024747931</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Event 14     Event 15     Event 16     Event 17     Event 18     Event 19</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 0.0007787642 0.0003834044 0.0003137311 0.0001010352 0.0001123888 0.0004848228</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.0077805017 0.0019915287 0.0007116988 0.0003040931 0.0003580146 0.0001079202</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Event 20     Event 21     Event 22     Event 23    Event 24     Event 25</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 0.0001781611 0.0007311137 0.0003162343 0.0005731831 0.001192464 0.0002290646</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.0000000000 0.0000000000 0.0000000000 0.0000000000 0.000000000 0.0000000000</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Event 26  Survival  Overall</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 0.004352256 0.2967478 1.048254</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.000000000 0.4958881 1.407999</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Restricted mean time in favor of group &quot;1&quot; by time tau = 3.5:</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Estimate   Std.Err Z value Pr(&gt;|z|)   </span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Event 1   0.014519  0.047535  0.3054 0.760034   </span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Event 2   0.044924  0.045661  0.9839 0.325185   </span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Event 3   0.115116  0.035992  3.1984 0.001382 **</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Event 4+ -0.013954  0.049358 -0.2827 0.777403   </span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Survival  0.199140  0.093300  2.1344 0.032810 * </span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Overall   0.359745  0.154062  2.3351 0.019540 * </span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<p>From the above output, we conclude that, at 3.5 years, the combined treatment on average gains the patient <span class="math inline">\(\mu(\tau)=0.36\)</span> extra year in a more favorable state compared to the control. This total effect size comprises an additional <span class="math inline">\(\mu_D(\tau)=0.20\)</span> year of survival time and <span class="math inline">\(\mu_H(\tau)=0.36-0.20=0.16\)</span> year with fewer hospitalizations among the living. The latter component is mainly driven by a prolonging of time to the third hospitalization. The matrix containing the inferential results can be obtained from <code>summary(obj,tau=3.5,Kmax=4)$tab</code>.</p>
+<p>To obtain the inferential result for <span class="math inline">\(\mu_H(\tau)\)</span> as a whole, run</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize the inference results for hospitalization as a whole</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>obj_sum<span class="ot">=</span><span class="fu">summary</span>(obj,<span class="at">tau=</span><span class="fl">3.5</span>,<span class="at">Kmax=</span><span class="dv">1</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>obj_sum<span class="sc">$</span>tab</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Estimate    Std.Err  Z value   Pr(&gt;|z|)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Event 1+ 0.1606050 0.08986723 1.787136 0.07391549</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Survival 0.1991404 0.09330039 2.134400 0.03281004</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Overall  0.3597453 0.15406184 2.335071 0.01953971</span></span></code></pre></div>
+</div>
+<div id="graphical-analysis" class="section level3">
+<h3>Graphical analysis</h3>
+<p>Use the following code to construct the bouquet plot and the plot for the estimated <span class="math inline">\(\mu(\cdot)\)</span>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set-up plot parameters</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>oldpar <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">par</span>(<span class="st">&quot;mfrow&quot;</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Bouquet plot</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bouquet</span>(obj,<span class="at">Kmax=</span><span class="dv">4</span>,<span class="at">main=</span><span class="st">&quot;Bouquet plot&quot;</span>,<span class="at">cex.group=</span><span class="fl">0.8</span>, <span class="at">xlab=</span><span class="st">&quot;Restricted mean win/loss time (years)&quot;</span>, </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Follow-up time (years)&quot;</span>, <span class="at">cex.main=</span><span class="fl">0.8</span>) <span class="co">#cex.group: font size of group labels#</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot of RMT in favor of treatment over time</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj,<span class="at">conf=</span><span class="cn">TRUE</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>,<span class="at">conf.col=</span><span class="st">&#39;blue&#39;</span>,<span class="at">conf.lty=</span><span class="dv">2</span>, <span class="at">xlab=</span><span class="st">&quot;Follow-up time (years)&quot;</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;RMT in favor of treatment (years)&quot;</span>,<span class="at">main=</span><span class="st">&quot;Exercise training vs usual care&quot;</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(oldpar)</span></code></pre></div>
+<p>In the bouquet plot, the four bands with different shades of gray, from the darkest to the lightest, correspond to survival, 4+ hospitalizations, 3 hospitalization, 2 hospitalizations, and 1 hospitalization, respectively. We can see that the restricted mean survival time is clearly in favor of exercise training. The restricted mean win times on the second and third hospitalizations are also visibly greater in the treatment group. The 95% confidence limits for <span class="math inline">\(\mu(\tau)\)</span> in the right panel suggests that the overall treatment effect becomes significant at the 0.05 level after approximately 1 year of follow-up and stays so till the end of the study.</p>
+</div>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<ul>
+<li>Buyse, M. (2010). Generalized pairwise comparisons of prioritized outcomes in the two‐sample problem. <em>Statistics in Medicine</em>, 29, 3245–3257.</li>
+<li>Mao, L. (2021). On restricted mean time in favour of treatment. <em>Submitted</em>.</li>
+<li>Mao, L. &amp; Lin, D. Y. (2016). Semiparametric regression for the weighted composite endpoint of recurrent and terminal events. Biostatistics, 172, 390–403.</li>
+<li>O’Connor, C. M., Whellan, D. J., Lee, K. L., Keteyian, S. J., Cooper, L. S., Ellis, S. J., … &amp; Rendall, D. S. (2009). Efficacy and safety of exercise training in patients with chronic heart failure: HF-ACTION randomized controlled trial. JAMA, 301, 1439–1450.</li>
+<li>Royston, P. &amp; Parmar, M. K. (2011). The use of restricted mean survival time to estimate the treatment effect in randomized clinical trials when the proportional hazards assumption is in doubt. <em>Statistics in Medicine</em>, 30, 2409–2421.</li>
+</ul>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
